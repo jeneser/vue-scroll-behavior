@@ -16,7 +16,8 @@
 - [Description](#description)
 - [Example](#example)
 - [Options](#options)
-- [How does it work?](#how-does-it-work)
+- [Change log](#Change log)
+- [Contribute](#Contribute)
 
 ## Demo
 You can check vue-scroll-behavior demo at **https://jeneser.github.io/douban**
@@ -45,28 +46,29 @@ If you are using Vue globally, just include `vue-scroll-behavior.js` and it will
 
 ## Description
 
-`vue-scroll-behavior` is
+When using client-side routing, we may want to scroll to top when navigating to a new route, or preserve the scrolling position of history entries just like real page reload does. vue-router allows you to achieve these and even better. But, vue-router scroll behavior feature only works in HTML5 history mode...
 
-### Why you might need `vue-scroll-behavior`?
+**`vue-scroll-behavior` allows you to completely customize the scroll behavior in HTML5 history mode and hash mode.**
 
-### Features
+## Features
 
-Check demos site to see it in action.
+* **Simplicity** - only need to call `Vue.vueScrollBehavior(router)`
+* **Compatibility** - Working in HTML5 history mode and hash mode
 
 ## Example
-For additional examples and detailed description check the demos page.
+
+For additional examples and detailed description check the demo. **https://jeneser.github.io/douban**
 
 ## Options
 
+developing...
+
+## Change log
+
 ## Contribute
 
-#### Developement
-```
-npm install
-
-npm run build
-```
+Please make sure to read the [Contributing Guide](https://github.com/jeneser/vue-scroll-behavior/blob/master/CONTRIBUTING.md) before making a pull request.
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[MIT](https://github.com/jeneser/douban/blob/master/LICENSE) Copyright (c) 2017 Jeneser
