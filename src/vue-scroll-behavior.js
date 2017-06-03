@@ -1,26 +1,31 @@
+/**
+  * vue-scroll-behavior v0.1.0
+  * (c) 2017 jeneser
+  * @license MIT
+  */
+
 import { getScrollTop, setScrollTop } from './utils/helpers'
 
 const vueScrollBehavior = {}
 
-// Plugin API
-// *********
+/**
+ * Plugin API
+ */
 vueScrollBehavior.install = function (Vue, opts) {
-  // Global property history list
+  // Global property
   Vue.historyList = []
 
   // Global method
   Vue.vueScrollBehavior = function (router) {
+
     if (typeof router !== 'undefined') {
-      // BeforeEach
+      // Router beforeEach
       router.beforeEach((to, from, next) => {
-        // Getting scrollTop
+
         let position = getScrollTop()
-        // Getting current path index
         let currentPathIndex = this.historyList.findIndex(e => {
           return e.path === from.fullPath
         })
-
-        console.log(currentPathIndex)
 
         if (currentPathIndex !== -1) {
           this.historyList[currentPathIndex].position = position
@@ -31,20 +36,19 @@ vueScrollBehavior.install = function (Vue, opts) {
           })
         }
 
-        console.log(this.historyList)
         next()
       })
 
-      // AfterEach
+      // Router afterEach
       router.afterEach(route => {
+
         let savedPosition = this.historyList.find(e => {
           return e.path === route.fullPath
         }) || 0
 
-        console.log(savedPosition)
-
         setScrollTop(savedPosition.position)
       })
+
     } else {
       console.warn('vue-scroll-behavior dependent on vue-router! ' +
         'Please Create the router instance.')
@@ -52,8 +56,9 @@ vueScrollBehavior.install = function (Vue, opts) {
   }
 }
 
-// Auto install
-// ********
+/**
+ * Auto install
+ */
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(vueScrollBehavior)
 }
