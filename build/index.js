@@ -10,7 +10,7 @@ var author = process.env.VERSION || require('../package.json').author
 var banner =
   '/**\n' +
   ' * vue-scroll-behavior v' + version + '\n' +
-  ' * (c) ' + new Date().getFullYear() + ' \n' + author +
+  ' * (c) ' + new Date().getFullYear() + ' ' + author + '\n' +
   ' * @license MIT\n' +
   ' */\n'
 
