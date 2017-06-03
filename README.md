@@ -16,7 +16,7 @@
 - [Description](#description)
 - [Example](#example)
 - [Options](#options)
-- [Change log](#Change log)
+- [ChangeLog](#ChangeLog)
 - [Contribute](#Contribute)
 
 ## Demo
@@ -63,7 +63,7 @@ For additional examples and detailed description check the demo. **https://jenes
 
 developing...
 
-## Change log
+## ChangeLog
 
 ## Contribute
 
