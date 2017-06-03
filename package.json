@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/jeneser/vue-scroll-behavior",
   "scripts": {
-    "build": "node build"
+    "build": "node build",
+    "test": "npm run build"
   },
   "dependencies": {
     "vue": "^2.3.3"
