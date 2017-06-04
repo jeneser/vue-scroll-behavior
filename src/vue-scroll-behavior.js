@@ -18,7 +18,7 @@ vueScrollBehavior.install = function (Vue, opts) {
   // Global method
   Vue.vueScrollBehavior = function (router) {
 
-    if (typeof router !== 'undefined') {
+    if (typeof router === 'object' && typeof router.beforeEach === 'function') {
       // Router beforeEach
       router.beforeEach((to, from, next) => {
 

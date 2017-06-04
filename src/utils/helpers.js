@@ -2,12 +2,15 @@
  * Getting scrollTop
  */
 export function getScrollTop() {
-  return document.getElementsByTagName('body')[0].scrollTop
+  return window.pageYOffset || document.documentElement.scrollTop
+    || document.body.scrollTop || 0
 }
 
 /**
  * Setting scrollTop
  */
 export function setScrollTop(value) {
-  document.getElementsByTagName('body')[0].scrollTop = value
+  window.pageYOffset = value
+  document.documentElement.scrollTop = value
+  document.body.scrollTop = value
 }

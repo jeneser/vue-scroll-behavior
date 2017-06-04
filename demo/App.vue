@@ -3,7 +3,7 @@
     <img src="./assets/logo.png">
     <router-view></router-view>
     <div class="position">
-      Top: {{ scrollTop }}
+      Top: {{ top }}
     </div>
   </div>
 </template>
@@ -13,13 +13,13 @@ export default {
   name: 'app',
   data () {
     return {
-      scrollTop: 0
+      top: 0
     }
   },
   methods: {
     onScroll () {
-      let d = document
-      this.scrollTop = d.getElementsByTagName('body')[0].scrollTop
+      this.top = window.pageYOffset || document.documentElement.scrollTop
+        || document.body.scrollTop || 0
     }
   },
   mounted: function () {
@@ -37,10 +37,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
-/*body {
-  height: 2000px;
-}*/
 
 h1, h2 {
   font-weight: normal;
