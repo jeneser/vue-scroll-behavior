@@ -10,6 +10,13 @@ Vue.config.productionTip = false
 Vue.use(vueScrollBehavior)
 Vue.vueScrollBehavior(router)
 
+Vue.directive('elem', {
+  inserted: function (el) {
+    el.innerHTML =
+      'Distance top height: <b>' + el.offsetTop + '</b>px'
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

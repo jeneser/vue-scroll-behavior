@@ -21,7 +21,23 @@ export default {
   margin-top: 60px;
 }
 
-body {
+/*body {
   height: 2000px;
+}*/
+
+h1, h2 {
+  font-weight: normal;
+}
+
+a {
+  color: #333;
+}
+
+.router-link-active {
+  color: #42b983;
+}
+
+.position {
+  margin: 400px 0;
 }
 </style>

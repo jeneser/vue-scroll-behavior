@@ -1,6 +1,6 @@
 <template>
-  <div class="book">
-    <h2>Book Links</h2>
+  <div class="movie">
+    <h2>Movie Links</h2>
     <links></links>
     <h1>{{ msg }}</h1>
     <div class="position" v-for="n in 4">
@@ -14,11 +14,11 @@
 import Links from './Links'
 
 export default {
-  name: 'book',
+  name: 'movie',
   components: { Links },
   data () {
     return {
-      msg: 'Welcome, Your book links'
+      msg: 'Welcome, Your movie links'
     }
   }
 }
