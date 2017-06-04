@@ -7,9 +7,11 @@ import vueScrollBehavior from '../src/vue-scroll-behavior.js'
 
 Vue.config.productionTip = false
 
+// Using vueScrollBehavior
 Vue.use(vueScrollBehavior)
 Vue.vueScrollBehavior(router)
 
+// Directive v-elem, getting elem offsetTop
 Vue.directive('elem', {
   inserted: function (el) {
     el.innerHTML =

@@ -3,7 +3,7 @@
     <h2>Book Links</h2>
     <links></links>
     <h1>{{ msg }}</h1>
-    <div class="position" v-for="n in 4">
+    <div class="flag" v-for="n in 4">
       <p v-elem></p>
       <links></links>
     </div>
@@ -18,7 +18,7 @@ export default {
   components: { Links },
   data () {
     return {
-      msg: 'Welcome, Your book links'
+      msg: 'Great, Your book'
     }
   }
 }

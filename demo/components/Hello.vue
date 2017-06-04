@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
-    <h2>Life Links</h2>
+    <h2>welcome</h2>
     <links></links>
     <h1>{{ msg }}</h1>
-    <div class="position" v-for="n in 4">
+    <div class="flag" v-for="n in 4">
       <p v-elem></p>
       <links></links>
     </div>
@@ -18,7 +18,7 @@ export default {
   components: { Links },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'vue-scroll-behavior'
     }
   }
 }
