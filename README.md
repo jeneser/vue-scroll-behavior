@@ -20,7 +20,11 @@
 - [Contribute](#Contribute)
 
 ## Demo
-You can check vue-scroll-behavior demo at **https://jeneser.github.io/douban**
+You can check vue-scroll-behavior demos at:
+
+Douban: **https://jeneser.github.io/douban**
+
+Simple: **https://jeneser.github.io/vue-scroll-behavior**
 
 ## Installation
 
@@ -58,6 +62,14 @@ When using client-side routing, we may want to scroll to top when navigating to 
 ## Example
 
 For additional examples and detailed description check the demo. **https://jeneser.github.io/douban**
+You can clone this repository. then
+```bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+```
 
 ## Options
 
@@ -65,9 +77,26 @@ developing...
 
 ## ChangeLog
 
+- June 4, 2017:
+  - Fix some bug, Perform browser testing
+  - Publish @0.1.2
+- June 5, 2017:
+  - Publish @0.1.3
+
 ## Contribute
 
 Please make sure to read the [Contributing Guide](https://github.com/jeneser/vue-scroll-behavior/blob/master/CONTRIBUTING.md) before making a pull request.
+
+```bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build library and demo for production
+npm run build
+```
 
 ## License
 

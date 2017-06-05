@@ -1,5 +1,5 @@
 /**
-  * vue-scroll-behavior v0.1.0
+  * vue-scroll-behavior v0.1.3
   * (c) 2017 jeneser
   * @license MIT
   */
@@ -44,9 +44,13 @@ vueScrollBehavior.install = function (Vue, opts) {
 
         let savedPosition = this.historyList.find(e => {
           return e.path === route.fullPath
-        }) || 0
+        })
 
-        setScrollTop(savedPosition.position)
+        if (typeof savedPosition !== 'undefined') {
+          setScrollTop(savedPosition.position)
+        } else {
+          setScrollTop(0)
+        }
       })
 
     } else {

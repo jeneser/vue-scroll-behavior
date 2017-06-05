@@ -52,11 +52,25 @@
 
 After cloning the repo, run:
 
-    $ npm install
+```bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build library and demo for production
+npm run build
+```
 
 ### Commonly used NPM scripts
 
-    # build all dist files, including npm packages
-    $ npm run build
+```bash
+# build library for production
+npm run build:library
+
+# build demo for production
+npm run build:demo
+```
 
 There are some other scripts available in the `scripts` section of the `package.json` file.
