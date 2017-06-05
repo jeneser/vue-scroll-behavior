@@ -48,6 +48,12 @@ If you are using Vue globally, just include `vue-scroll-behavior.js` and it will
 <script src="path/to/vue-scroll-behavior.js"></script>
 ```
 
+**CDN**
+
+```html
+<script src="https://unpkg.com/vue-scroll-behavior@0.1.4/dist/vue-scroll-behavior.js"></script>
+```
+
 ## Description
 
 When using client-side routing, we may want to scroll to top when navigating to a new route, or preserve the scrolling position of history entries just like real page reload does. vue-router allows you to achieve these and even better. But, vue-router scroll behavior feature only works in HTML5 history mode...
@@ -82,6 +88,7 @@ developing...
   - Publish @0.1.2
 - June 5, 2017:
   - Publish @0.1.3
+  - Publish @0.1.4
 
 ## Contribute
 
