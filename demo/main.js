@@ -12,8 +12,13 @@ import vueScrollBehavior from '../dist/vue-scroll-behavior.js'
 Vue.config.productionTip = false
 
 // Using vueScrollBehavior
-Vue.use(vueScrollBehavior)
-Vue.vueScrollBehavior(router)
+Vue.use(vueScrollBehavior, {
+  router: router,
+  // maxLength: 3,
+  // ignore: [/\/b/, /\/m/],
+})
+
+// console.log(Vue.$historyList)
 
 // Directive v-elem, getting elem offsetTop
 Vue.directive('elem', {
