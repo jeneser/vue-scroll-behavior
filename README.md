@@ -36,22 +36,25 @@ npm install vue-scroll-behavior --save
 ```javascript
 import vueScrollBehavior from 'vue-scroll-behavior'
 
-Vue.use(vueScrollBehavior)
-Vue.vueScrollBehavior(router)
+Vue.use(vueScrollBehavior, { router: router })
 ```
 
 #### Direct include
 
-If you are using Vue globally, just include `vue-scroll-behavior.js` and it will automatically install it.
+If you are using Vue globally, just include `vue-scroll-behavior.js` and it will automatically install it. Then, you need call `Vue.$vueScrollBehavior(router)` pass the router instance `router`.
 
 ```html
 <script src="path/to/vue-scroll-behavior.js"></script>
+
+<script>
+  Vue.$vueScrollBehavior(router)
+</script>
 ```
 
 **CDN**
 
 ```html
-<script src="https://unpkg.com/vue-scroll-behavior@0.1.4/dist/vue-scroll-behavior.js"></script>
+<script src="https://unpkg.com/vue-scroll-behavior@0.1.5/dist/vue-scroll-behavior.js"></script>
 ```
 
 ## Description
@@ -67,8 +70,25 @@ When using client-side routing, we may want to scroll to top when navigating to 
 
 ## Example
 
+When used with a module system, you can install it via `Vue.use()`, then pass some opts:
+
+```javascript
+import Vue from 'vue'
+import router from './router'
+import vueScrollBehavior from 'vue-scroll-behavior'
+
+// Using vueScrollBehavior
+Vue.use(vueScrollBehavior, {
+  router: router,
+  maxLength: 100,
+  ignore: [/\/boo/, /\/zoo/],
+})
+```
+
 For additional examples and detailed description check the demo. **https://jeneser.github.io/douban**
-You can clone this repository. then
+
+You can clone this repository. Check the silmp demo.
+
 ```bash
 # install dependencies
 npm install
@@ -79,7 +99,14 @@ npm run dev
 
 ## Options
 
-developing...
+List of available Options:
+
+Prop           | Data Type  | Default   | Description
+-------------- | ---------- | --------- | -----------
+`router`       | Object     |           | The router instance: `const router = new VueRouter({})`
+`ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes
+`maxLength`    | Number     | `50`      | Saved history List max length
+
 
 ## ChangeLog
 
@@ -89,6 +116,8 @@ developing...
 - June 5, 2017:
   - Publish @0.1.3
   - Publish @0.1.4
+- June 7, 2017:
+  - Publish @0.1.5 Add some opts
 
 ## Contribute
 

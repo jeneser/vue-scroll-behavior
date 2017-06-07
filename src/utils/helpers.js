@@ -1,14 +1,48 @@
+import vueScrollBehavior from '../vue-scroll-behavior'
+
 /**
- * Getting scrollTop
+ * Setting options
  */
-export function getScrollTop() {
-  return window.pageYOffset || document.documentElement.scrollTop
-    || document.body.scrollTop
+export function setOption (options) {
+  if (typeof options.maxLength !== 'undefined' &&
+    typeof options.maxLength === 'number') {
+    vueScrollBehavior._maxLength = options.maxLength
+  }
+
+  if (typeof options.ignore !== 'undefined' && Array.isArray(options.ignore)) {
+    vueScrollBehavior._ignore = options.ignore
+  }
 }
 
 /**
- * Setting scrollTop
+ * Getting Scroll Position
  */
-export function setScrollTop(value) {
-  window.scrollTo(0, value)
+export function getScrollPosition () {
+  return {
+    x: window.pageXOffset,
+    y: window.pageYOffset
+  }
+}
+
+/**
+ * Setting Scroll Position
+ */
+export function setScrollPosition (position) {
+  window.scrollTo(position.x, position.y)
+}
+
+/**
+ * Cleaning historyList
+ */
+export function cleanHistoryList (historyList) {
+  historyList.splice(0, parseInt(historyList.length/2))
+}
+
+/**
+ * Is ignore route
+ */
+export function isIgnoreRoute (target) {
+  vueScrollBehavior._ignore.some(e => {
+    return target.fullPath.match(e)
+  })
 }

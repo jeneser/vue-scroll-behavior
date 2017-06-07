@@ -1,63 +1,100 @@
 /**
-  * vue-scroll-behavior v0.1.3
+  * vue-scroll-behavior v0.1.5
   * (c) 2017 jeneser
   * @license MIT
   */
 
-import { getScrollTop, setScrollTop } from './utils/helpers'
+import { setOption, isIgnoreRoute, getScrollPosition, setScrollPosition,
+  cleanHistoryList } from './utils/helpers'
 
-const vueScrollBehavior = {}
+const vueScrollBehavior = {
+  _maxLength: 50,
+  _ignore: []
+}
 
 /**
  * Plugin API
  */
-vueScrollBehavior.install = function (Vue, opts) {
+vueScrollBehavior.install = function (Vue, options) {
+
+  // Init options
+  setOption(options)
+
   // Global property
-  Vue.historyList = []
+  Vue.$historyList = []
 
   // Global method
-  Vue.vueScrollBehavior = function (router) {
+  Vue.$vueScrollBehavior = function (router) {
 
     if (typeof router === 'object' && typeof router.beforeEach === 'function') {
       // Router beforeEach
       router.beforeEach((to, from, next) => {
 
-        let position = getScrollTop()
-        let currentPathIndex = this.historyList.findIndex(e => {
-          return e.path === from.fullPath
-        })
+        // Ignore route
+        if (isIgnoreRoute(from)) {
 
-        if (currentPathIndex !== -1) {
-          this.historyList[currentPathIndex].position = position
+          next()
+
         } else {
-          this.historyList.push({
-            path: from.fullPath,
-            position: position
+
+          let _historyList = this.$historyList
+          let position = getScrollPosition()
+          let currentPathIndex = _historyList.findIndex(e => {
+            return e.path === from.fullPath
           })
+
+          // Cleaning historyList
+          if (_historyList.length >= vueScrollBehavior._maxLength) {
+            cleanHistoryList(_historyList)
+          }
+
+          if (currentPathIndex !== -1) {
+            _historyList[currentPathIndex].position = position
+          } else {
+            _historyList.push({
+              path: from.fullPath,
+              position: position
+            })
+          }
+
+          next()
         }
 
-        next()
       })
 
       // Router afterEach
       router.afterEach(route => {
 
-        let savedPosition = this.historyList.find(e => {
-          return e.path === route.fullPath
-        })
-
-        if (typeof savedPosition !== 'undefined') {
-          setScrollTop(savedPosition.position)
+        if (isIgnoreRoute(route)) {
+          setScrollPosition({
+            x: 0,
+            y: 0
+          })
         } else {
-          setScrollTop(0)
+
+          let savedPosition = this.$historyList.find(e => {
+            return e.path === route.fullPath
+          })
+
+          if (typeof savedPosition !== 'undefined') {
+            setScrollPosition(savedPosition.position)
+          } else {
+            setScrollPosition({
+              x: 0,
+              y: 0
+            })
+          }
         }
+
       })
 
     } else {
-      console.warn('vue-scroll-behavior dependent on vue-router! ' +
-        'Please Create the router instance.')
+      console.warn('Vue-scroll-behavior dependent on vue-router! ' +
+        'Please create the router instance.')
     }
   }
+
+  Vue.$vueScrollBehavior(options.router)
 }
 
 /**
