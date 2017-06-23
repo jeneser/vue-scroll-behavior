@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // process.env.NODE_ENV === 'development'
-// import vueScrollBehavior from '../src/vue-scroll-behavior.js'
+import vueScrollBehavior from '../src/vue-scroll-behavior.js'
 
 // process.env.NODE_ENV === 'production'
-import vueScrollBehavior from '../dist/vue-scroll-behavior.js'
+// import vueScrollBehavior from '../dist/vue-scroll-behavior.js'
 
 Vue.config.productionTip = false
 
