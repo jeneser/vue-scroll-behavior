@@ -14,6 +14,8 @@ const vueScrollBehavior = {
 
 /**
  * Plugin API
+ * vsbHistoryList [property]
+ * vueScrollBehavior [function]
  */
 vueScrollBehavior.install = function (Vue, options) {
 

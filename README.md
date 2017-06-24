@@ -54,7 +54,7 @@ If you are using Vue globally, just include `vue-scroll-behavior.js` and it will
 **CDN**
 
 ```html
-<script src="https://unpkg.com/vue-scroll-behavior@0.1.5/dist/vue-scroll-behavior.js"></script>
+<script src="https://unpkg.com/vue-scroll-behavior@0.1.6/dist/vue-scroll-behavior.js"></script>
 ```
 
 ## Description
@@ -110,14 +110,16 @@ Prop           | Data Type  | Default   | Description
 
 ## ChangeLog
 
-- June 4, 2017:
-  - Fix some bug, Perform browser testing
-  - Publish @0.1.2
+- June 24, 2017:
+  - Publish @0.1.6 Fix issue#2
+- June 7, 2017:
+  - Publish @0.1.5 Add some opts
 - June 5, 2017:
   - Publish @0.1.3
   - Publish @0.1.4
-- June 7, 2017:
-  - Publish @0.1.5 Add some opts
+- June 4, 2017:
+  - Fix some bug, Perform browser testing
+  - Publish @0.1.2
 
 ## Contribute
 

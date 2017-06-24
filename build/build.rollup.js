@@ -28,7 +28,7 @@ rollup.rollup({
     }).code)
 })
 .then(() => {
-    console.log('Awsome! vue-scroll-behavior v' + version + ' builded.')
+    console.log('Awesome! vue-scroll-behavior v' + version + ' builded.')
 })
 .catch(console.log)
 
