@@ -27,8 +27,10 @@ export function getScrollPosition () {
 /**
  * Setting Scroll Position
  */
-export function setScrollPosition (position) {
-  window.scrollTo(position.x, position.y)
+export function setScrollPosition (Vue, position = {x: 0, y: 0}) {
+  Vue.nextTick(() => {
+    window.scrollTo(position.x, position.y)
+  })
 }
 
 /**

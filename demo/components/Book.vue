@@ -3,7 +3,7 @@
     <h2>Book Links</h2>
     <links></links>
     <h1>{{ msg }}</h1>
-    <div class="flag" v-for="n in 4">
+    <div class="flag" v-for="n in 2">
       <p v-elem></p>
       <links></links>
     </div>

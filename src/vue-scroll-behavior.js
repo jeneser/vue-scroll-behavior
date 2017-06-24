@@ -1,5 +1,5 @@
 /**
-  * vue-scroll-behavior v0.1.5
+  * vue-scroll-behavior v0.1.6
   * (c) 2017 jeneser
   * @license MIT
   */
@@ -14,6 +14,8 @@ const vueScrollBehavior = {
 
 /**
  * Plugin API
+ * vsbHistoryList [property]
+ * vueScrollBehavior [function]
  */
 vueScrollBehavior.install = function (Vue, options) {
 
@@ -21,10 +23,10 @@ vueScrollBehavior.install = function (Vue, options) {
   setOption(options)
 
   // Global property
-  Vue.$historyList = []
+  Vue.vsbHistoryList = []
 
   // Global method
-  Vue.$vueScrollBehavior = function (router) {
+  Vue.vueScrollBehavior = function (router) {
 
     if (typeof router === 'object' && typeof router.beforeEach === 'function') {
       // Router beforeEach
@@ -37,7 +39,7 @@ vueScrollBehavior.install = function (Vue, options) {
 
         } else {
 
-          let _historyList = this.$historyList
+          let _historyList = this.vsbHistoryList
           let position = getScrollPosition()
           let currentPathIndex = _historyList.findIndex(e => {
             return e.path === from.fullPath
@@ -66,23 +68,17 @@ vueScrollBehavior.install = function (Vue, options) {
       router.afterEach(route => {
 
         if (isIgnoreRoute(route)) {
-          setScrollPosition({
-            x: 0,
-            y: 0
-          })
+          setScrollPosition(Vue)
         } else {
 
-          let savedPosition = this.$historyList.find(e => {
+          let savedPosition = this.vsbHistoryList.find(e => {
             return e.path === route.fullPath
           })
 
           if (typeof savedPosition !== 'undefined') {
-            setScrollPosition(savedPosition.position)
+            setScrollPosition(Vue, savedPosition.position)
           } else {
-            setScrollPosition({
-              x: 0,
-              y: 0
-            })
+            setScrollPosition(Vue)
           }
         }
 
@@ -94,7 +90,7 @@ vueScrollBehavior.install = function (Vue, options) {
     }
   }
 
-  Vue.$vueScrollBehavior(options.router)
+  Vue.vueScrollBehavior(options.router)
 }
 
 /**

@@ -18,7 +18,7 @@ Vue.use(vueScrollBehavior, {
   // ignore: [/\/b/, /\/m/],
 })
 
-// console.log(Vue.$historyList)
+// console.log(Vue.vsbHstoryList)
 
 // Directive v-elem, getting elem offsetTop
 Vue.directive('elem', {
