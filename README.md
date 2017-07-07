@@ -1,6 +1,6 @@
 ## vue-scroll-behavior
 
-**Completely customize the scroll behavior on route navigation**
+**Customize the scrolling position on route navigation**
 
 [![npm version](https://badge.fury.io/js/vue-scroll-behavior.svg)](https://badge.fury.io/js/vue-scroll-behavior) [![Build Status](https://travis-ci.org/jeneser/vue-scroll-behavior.svg?branch=master)](https://travis-ci.org/jeneser/vue-scroll-behavior) [![David](https://img.shields.io/david/expressjs/express.svg?style=flat-square)](https://github.com/jeneser/douban) [![Percentage of issues still open](http://isitmaintained.com/badge/open/jeneser/vue-scroll-behavior.svg)](http://isitmaintained.com/project/jeneser/vue-scroll-behavior "Percentage of issues still open") [![PR](https://img.shields.io/badge/PR-welcome-brightgreen.svg)](https://github.com/jeneser/vue-scroll-behavior/pulls) [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/jeneser/vue-scroll-behavior/blob/master/LICENSE)
 
@@ -61,12 +61,16 @@ If you are using Vue globally, just include `vue-scroll-behavior.js` and it will
 
 When using client-side routing, we may want to scroll to top when navigating to a new route, or preserve the scrolling position of history entries just like real page reload does. vue-router allows you to achieve these and even better. But, vue-router scroll behavior feature only works in HTML5 history mode...
 
-**`vue-scroll-behavior` allows you to completely customize the scroll behavior in HTML5 history mode and hash mode.**
+**`vue-scroll-behavior` allows you to customize the scrolling position on route navigation. Especially hash mode. You just need to tell it which routes need to be processed, and it will do that automatically. **
+
+**If you have some special scenes, we also provide some options, and you can manually use them to save or restore the scroll position**
 
 ## Features
 
 * **Simplicity** - only need to call `Vue.vueScrollBehavior(router)`
 * **Compatibility** - Working in HTML5 history mode and hash mode
+* **Automatically** - Automatically saves or restores the scroll position
+* **Customizable** - Can manually save or restore the scroll position
 
 ## Example
 
