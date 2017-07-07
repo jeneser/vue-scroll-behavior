@@ -63,7 +63,9 @@ When using client-side routing, we may want to scroll to top when navigating to 
 
 **`vue-scroll-behavior` allows you to customize the scrolling position on route navigation. Especially hash mode. You just need to tell it which routes need to be processed, and it will do that automatically**
 
-**If you have some special scenes, we also provide some options, and you can manually use them to save or restore the scroll position**
+**By default, It will scroll to the saved position. If you ignore some routes, they will directly scroll to the top**
+
+**Of course, If you have some special scenes, we also provide some options, and you can manually use them to save or restore the scroll position**
 
 ## Features
 
@@ -83,9 +85,9 @@ import vueScrollBehavior from 'vue-scroll-behavior'
 
 // Using vueScrollBehavior
 Vue.use(vueScrollBehavior, {
-  router: router,
-  maxLength: 100,
-  ignore: [/\/boo/, /\/zoo/],
+  router: router,    // The router instance
+  maxLength: 100,    // Saved history List max length
+  ignore: [/\/boo/, /\/zoo/]    // ignore some routes, they will directly scroll to the top
 })
 ```
 
@@ -108,7 +110,7 @@ List of available Options:
 Prop           | Data Type  | Default   | Description
 -------------- | ---------- | --------- | -----------
 `router`       | Object     |           | The router instance: `const router = new VueRouter({})`
-`ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes
+`ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes, they will directly scroll to the top
 `maxLength`    | Number     | `50`      | Saved history List max length
 
 
