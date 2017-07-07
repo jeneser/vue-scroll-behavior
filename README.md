@@ -116,6 +116,8 @@ Prop           | Data Type  | Default   | Description
 
 ## ChangeLog
 
+This project uses semantic versioning. [Learn more](http://semver.org/)
+
 - June 24, 2017:
   - Publish @0.1.6 Fix issue#2
 - June 7, 2017:
