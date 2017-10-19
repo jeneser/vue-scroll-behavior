@@ -67,6 +67,7 @@ When using client-side routing, we may want to scroll to top when navigating to 
 
 **Of course, If you have some special scenes, we also provide some options, and you can manually use them to save or restore the scroll position**
 
+**If you use transitions on all of your route changes, use the _delay_ option to delay the scroll until the appropriate point (e.g. the middle of the changeover).**
 ## Features
 
 * **Simplicity** - only need to call `Vue.vueScrollBehavior(router)`
@@ -87,7 +88,8 @@ import vueScrollBehavior from 'vue-scroll-behavior'
 Vue.use(vueScrollBehavior, {
   router: router,    // The router instance
   maxLength: 100,    // Saved history List max length
-  ignore: [/\/boo/, /\/zoo/]    // ignore some routes, they will directly scroll to the top
+  ignore: [/\/boo/, /\/zoo/],    // ignore some routes, they will directly scroll to the top
+  delay: 0          // Delay by a number of milliseconds
 })
 ```
 
@@ -112,6 +114,7 @@ Prop           | Data Type  | Default   | Description
 `router`       | Object     |           | The router instance: `const router = new VueRouter({})`
 `ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes, they will directly scroll to the top
 `maxLength`    | Number     | `50`      | Saved history List max length
+`delay`        | Number     | `0`       | Delay scroll by a number of milliseconds
 
 
 ## ChangeLog
