@@ -9,7 +9,8 @@ import { setOption, isIgnoreRoute, getScrollPosition, setScrollPosition,
 
 const vueScrollBehavior = {
   _maxLength: 50,
-  _ignore: []
+  _ignore: [],
+  _delay: 0
 }
 
 /**
