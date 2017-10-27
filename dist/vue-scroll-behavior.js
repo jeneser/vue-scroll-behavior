@@ -1,5 +1,5 @@
 /**
- * vue-scroll-behavior v0.1.6
+ * vue-scroll-behavior v0.2.0
  * (c) 2017 jeneser <jeneserwang@gmail.com>
  * @license MIT
  */

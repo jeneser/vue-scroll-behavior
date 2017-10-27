@@ -16,6 +16,7 @@ Vue.use(vueScrollBehavior, {
   router: router,
   // maxLength: 3,
   // ignore: [/\/b/, /\/m/],
+  // delay: 0
 })
 
 // console.log(Vue.vsbHstoryList)
