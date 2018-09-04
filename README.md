@@ -87,6 +87,7 @@ import vueScrollBehavior from 'vue-scroll-behavior'
 // Using vueScrollBehavior
 Vue.use(vueScrollBehavior, {
   router: router,    // The router instance
+  el: '#app',        // Custom element
   maxLength: 100,    // Saved history List max length
   ignore: [/\/boo/, /\/zoo/],    // ignore some routes, they will directly scroll to the top
   delay: 0          // Delay by a number of milliseconds
@@ -112,6 +113,7 @@ List of available Options:
 Prop           | Data Type  | Default   | Description
 -------------- | ---------- | --------- | -----------
 `router`       | Object     |           | The router instance: `const router = new VueRouter({})`
+`el`           | String     | null      | CSS selector: `#app`
 `ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes, they will directly scroll to the top
 `maxLength`    | Number     | `50`      | Saved history List max length
 `delay`        | Number     | `0`       | Delay scroll by a number of milliseconds
