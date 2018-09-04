@@ -36,6 +36,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  /* If you set the el option, you can open bottom code */
+  /* height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll; */
 }
 
 h1, h2 {
