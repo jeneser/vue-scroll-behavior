@@ -10,7 +10,8 @@ import { setOption, isIgnoreRoute, getScrollPosition, setScrollPosition,
 const vueScrollBehavior = {
   _maxLength: 50,
   _ignore: [],
-  _delay: 0
+  _delay: 0,
+  _leaveIgnored: false
 }
 
 /**
@@ -68,7 +69,7 @@ vueScrollBehavior.install = function (Vue, options) {
       // Router afterEach
       router.afterEach(route => {
 
-        if (isIgnoreRoute(route)) {
+        if (isIgnoreRoute(route) && !options._leaveIgnored) {
           setScrollPosition(Vue)
         } else {
 

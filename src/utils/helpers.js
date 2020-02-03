@@ -16,6 +16,10 @@ export function setOption (options) {
   if (typeof options.delay === 'number') {
     vueScrollBehavior._delay = options.delay
   }
+
+  if (typeof options.leaveIgnored === 'boolean') {
+    vueScrollBehavior._leaveIgnored = options.leaveIgnored
+  }
 }
 
 /**
