@@ -69,8 +69,10 @@ vueScrollBehavior.install = function (Vue, options) {
       // Router afterEach
       router.afterEach(route => {
 
-        if (isIgnoreRoute(route) && !vueScrollBehavior._leaveIgnored) {
-          setScrollPosition(Vue)
+        if (isIgnoreRoute(route)) {
+          if (!vueScrollBehavior._leaveIgnored) {
+            setScrollPosition(Vue)
+          }
         } else {
 
           let savedPosition = this.vsbHistoryList.find(e => {
