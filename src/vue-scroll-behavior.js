@@ -69,7 +69,7 @@ vueScrollBehavior.install = function (Vue, options) {
       // Router afterEach
       router.afterEach(route => {
 
-        if (isIgnoreRoute(route) && !options._leaveIgnored) {
+        if (isIgnoreRoute(route) && !vueScrollBehavior._leaveIgnored) {
           setScrollPosition(Vue)
         } else {
 
