@@ -56,7 +56,7 @@ export function cleanHistoryList (historyList) {
  * Is ignore route
  */
 export function isIgnoreRoute (target) {
-  vueScrollBehavior._ignore.some(e => {
+  return vueScrollBehavior._ignore.some(e => {
     return target.fullPath.match(e)
   })
 }
