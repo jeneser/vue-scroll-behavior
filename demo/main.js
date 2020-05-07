@@ -14,6 +14,7 @@ Vue.config.productionTip = false
 // Using vueScrollBehavior
 Vue.use(vueScrollBehavior, {
   router: router,
+  // el: '#app',
   // maxLength: 3,
   // ignore: [/\/b/, /\/m/],
   // delay: 0
