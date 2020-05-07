@@ -3,7 +3,11 @@ import vueScrollBehavior from '../vue-scroll-behavior'
 /**
  * Setting options
  */
-export function setOption (options) {
+export function setOption(options) {
+  if (typeof options.el === 'string') {
+    vueScrollBehavior._el = options.el
+  }
+
   if (typeof options.maxLength !== 'undefined' &&
     typeof options.maxLength === 'number') {
     vueScrollBehavior._maxLength = options.maxLength
@@ -26,26 +30,32 @@ export function setOption (options) {
  * Getting Scroll Position
  */
 export function getScrollPosition () {
+  const el = document.querySelector(vueScrollBehavior._el)
   return {
-    x: window.pageXOffset,
-    y: window.pageYOffset
+    x: el ? el.scrollLeft : window.pageXOffset,
+    y: el ? el.scrollTop : window.pageYOffset
   }
 }
 
 /**
  * Setting Scroll Position
  */
-export function setScrollPosition (Vue, position = {x: 0, y: 0}) {
-  if (vueScrollBehavior._delay > 0) {
-    setTimeout(() => {
-      Vue.nextTick(() => {
-          window.scrollTo(position.x, position.y)
-      })
-    }, vueScrollBehavior._delay);
-  } else {
+export function setScrollPosition (Vue, position = { x: 0, y: 0 }) {
+  const scrollTo = () => {
     Vue.nextTick(() => {
-      window.scrollTo(position.x, position.y)
+      const el = document.querySelector(vueScrollBehavior._el)
+      if (el) {
+        el.scrollLeft = position.x
+        el.scrollTop = position.y
+      } else {
+        window.scrollTo(position.x, position.y)
+      }
     })
+  }
+  if (vueScrollBehavior._delay > 0) {
+    setTimeout(scrollTo, vueScrollBehavior._delay)
+  } else {
+    scrollTo()
   }
 }
 
