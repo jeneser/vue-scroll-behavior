@@ -97,11 +97,4 @@ vueScrollBehavior.install = function (Vue, options) {
   Vue.vueScrollBehavior(options.router)
 }
 
-/**
- * Auto install
- */
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(vueScrollBehavior)
-}
-
 export default vueScrollBehavior
