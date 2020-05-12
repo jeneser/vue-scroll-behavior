@@ -1,19 +1,24 @@
 /**
-  * vue-scroll-behavior v0.2.0
-  * (c) 2017 jeneser
-  * @license MIT
-  */
+ * vue-scroll-behavior v0.2.0
+ * (c) 2017 jeneser
+ * @license MIT
+ */
 
-import { setOption, isIgnoreRoute, getScrollPosition, setScrollPosition,
-  cleanHistoryList } from './utils/helpers'
+import {
+  setOption,
+  isIgnoreRoute,
+  getScrollPosition,
+  setScrollPosition,
+  cleanHistoryList,
+} from './utils/helpers';
 
 const vueScrollBehavior = {
   _el: null,
   _maxLength: 50,
   _ignore: [],
   _delay: 0,
-  _leaveIgnored: false
-}
+  _leaveIgnored: false,
+};
 
 /**
  * Plugin API
@@ -21,81 +26,72 @@ const vueScrollBehavior = {
  * vueScrollBehavior [function]
  */
 vueScrollBehavior.install = function (Vue, options) {
-
   // Init options
-  setOption(options)
+  setOption(options);
 
   // Global property
-  Vue.vsbHistoryList = []
+  Vue.vsbHistoryList = [];
 
   // Global method
   Vue.vueScrollBehavior = function (router) {
-
     if (typeof router === 'object' && typeof router.beforeEach === 'function') {
       // Router beforeEach
       router.beforeEach((to, from, next) => {
-
         // Ignore route
         if (isIgnoreRoute(from)) {
-
-          next()
-
+          next();
         } else {
-
-          let _historyList = this.vsbHistoryList
-          let position = getScrollPosition()
-          let currentPathIndex = _historyList.findIndex(e => {
-            return e.path === from.fullPath
-          })
+          let _historyList = this.vsbHistoryList;
+          let position = getScrollPosition();
+          let currentPathIndex = _historyList.findIndex((e) => {
+            return e.path === from.fullPath;
+          });
 
           // Cleaning historyList
           if (_historyList.length >= vueScrollBehavior._maxLength) {
-            cleanHistoryList(_historyList)
+            cleanHistoryList(_historyList);
           }
 
           if (currentPathIndex !== -1) {
-            _historyList[currentPathIndex].position = position
+            _historyList[currentPathIndex].position = position;
           } else {
             _historyList.push({
               path: from.fullPath,
-              position: position
-            })
+              position: position,
+            });
           }
 
-          next()
+          next();
         }
-
-      })
+      });
 
       // Router afterEach
-      router.afterEach(route => {
-
+      router.afterEach((route) => {
         if (isIgnoreRoute(route)) {
           if (!vueScrollBehavior._leaveIgnored) {
-            setScrollPosition(Vue)
+            setScrollPosition(Vue);
           }
         } else {
-
-          let savedPosition = this.vsbHistoryList.find(e => {
-            return e.path === route.fullPath
-          })
+          let savedPosition = this.vsbHistoryList.find((e) => {
+            return e.path === route.fullPath;
+          });
 
           if (typeof savedPosition !== 'undefined') {
-            setScrollPosition(Vue, savedPosition.position)
+            setScrollPosition(Vue, savedPosition.position);
           } else {
-            setScrollPosition(Vue)
+            setScrollPosition(Vue);
           }
         }
-
-      })
-
+      });
     } else {
-      console.warn('Vue-scroll-behavior dependent on vue-router! ' +
-        'Please create the router instance.')
+      console.warn(
+        'Vue-scroll-behavior dependent on vue-router! ' +
+          'Please create the router instance.'
+      );
     }
-  }
+  };
 
-  Vue.vueScrollBehavior(options.router)
-}
+  Vue.vueScrollBehavior(options.router);
+};
 
-export default vueScrollBehavior
+export default vueScrollBehavior;
