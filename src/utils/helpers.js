@@ -3,7 +3,7 @@ import vueScrollBehavior from '../vue-scroll-behavior';
 /**
  * Setting options
  */
-export function setOption(options) {
+export function setOption(options = {}) {
   if (typeof options.el === 'string') {
     vueScrollBehavior._el = options.el;
   }
@@ -17,6 +17,10 @@ export function setOption(options) {
 
   if (typeof options.ignore !== 'undefined' && Array.isArray(options.ignore)) {
     vueScrollBehavior._ignore = options.ignore;
+  }
+
+  if (typeof options.filter !== 'undefined' && Array.isArray(options.filter)) {
+    vueScrollBehavior._filter = options.filter;
   }
 
   if (typeof options.delay === 'number') {
@@ -69,10 +73,27 @@ export function cleanHistoryList(historyList) {
 }
 
 /**
+ * Match route by RegExp list
+ */
+export function matchRoute(target, patterns) {
+  return patterns.some((e) => {
+    return target.fullPath.match(e);
+  });
+}
+
+/**
  * Is ignore route
  */
 export function isIgnoreRoute(target) {
-  return vueScrollBehavior._ignore.some((e) => {
-    return target.fullPath.match(e);
-  });
+  return matchRoute(target, vueScrollBehavior._ignore);
+}
+
+/**
+ * Is filter route
+ */
+export function isFilterRoute(target) {
+  return (
+    vueScrollBehavior._filter.length === 0 ||
+    matchRoute(target, vueScrollBehavior._filter)
+  );
 }
