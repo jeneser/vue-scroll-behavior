@@ -90,6 +90,7 @@ Vue.use(vueScrollBehavior, {
   el: '#app',        // Custom element
   maxLength: 100,    // Saved history List max length
   ignore: [/\/boo/, /\/zoo/],    // ignore some routes, they will directly scroll to the top
+  filter: [/\/foo/, /\/bar/],    // only apply to these routes
   delay: 0          // Delay by a number of milliseconds
 })
 ```
@@ -115,6 +116,7 @@ Prop           | Data Type  | Default   | Description
 `router`       | Object     |           | The router instance: `const router = new VueRouter({})`
 `el`           | String     | null      | CSS selector: `#app`
 `ignore`       | Array      | `[ ]`     | **RegExp** list to ignore some routes, they will directly scroll to the top
+`filter`       | Array      | `[ ]`     | **RegExp** list to only apply scroll behavior to matching routes
 `maxLength`    | Number     | `50`      | Saved history List max length
 `delay`        | Number     | `0`       | Delay scroll by a number of milliseconds
 
