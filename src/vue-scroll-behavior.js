@@ -7,6 +7,7 @@
 import {
   setOption,
   isIgnoreRoute,
+  isFilterRoute,
   getScrollPosition,
   setScrollPosition,
   cleanHistoryList,
@@ -16,6 +17,7 @@ const vueScrollBehavior = {
   _el: null,
   _maxLength: 50,
   _ignore: [],
+  _filter: [],
   _delay: 0,
   _leaveIgnored: false,
 };
@@ -37,8 +39,8 @@ vueScrollBehavior.install = function (Vue, options) {
     if (typeof router === 'object' && typeof router.beforeEach === 'function') {
       // Router beforeEach
       router.beforeEach((to, from, next) => {
-        // Ignore route
-        if (isIgnoreRoute(from)) {
+        // Ignore route or skip route outside filter
+        if (isIgnoreRoute(from) || !isFilterRoute(from)) {
           next();
         } else {
           let _historyList = this.vsbHistoryList;
@@ -67,7 +69,7 @@ vueScrollBehavior.install = function (Vue, options) {
 
       // Router afterEach
       router.afterEach((route) => {
-        if (isIgnoreRoute(route)) {
+        if (isIgnoreRoute(route) || !isFilterRoute(route)) {
           if (!vueScrollBehavior._leaveIgnored) {
             setScrollPosition(Vue);
           }
