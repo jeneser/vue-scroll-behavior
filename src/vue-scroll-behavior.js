@@ -27,7 +27,7 @@ const vueScrollBehavior = {
  * vsbHistoryList [property]
  * vueScrollBehavior [function]
  */
-vueScrollBehavior.install = function (Vue, options) {
+vueScrollBehavior.install = function (Vue, options = {}) {
   // Init options
   setOption(options);
 
